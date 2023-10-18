@@ -35,14 +35,14 @@ nodes:
     networkInterfaces:
       - interface: eno1
         mtu: 1500
-        dhcp: false
+        dhcp: true
         addresses:
-          - "10.0.1.40/24"
+          - 10.0.1.40/24
         routes:
           - network: 0.0.0.0/0
-            gateway: "10.0.1.1"
+            gateway: 10.0.1.1
         vip:
-          ip: "10.0.1.15"
+          ip: 10.0.1.15
   
   # macm 2018 3.2GHz / 32GB / 256GB SSD / 10GbE
   - hostname: s2.srbgod.io
@@ -56,14 +56,14 @@ nodes:
     networkInterfaces:
       - interface: enp6s0
         mtu: 1500
-        dhcp: false
+        dhcp: true
         addresses:
-          - "10.0.1.41/24"
+          - 10.0.1.41/24
         routes:
           - network: 0.0.0.0/0
-            gateway: "10.0.1.1"
+            gateway: 10.0.1.1
         vip:
-          ip: "10.0.1.15"
+          ip: 10.0.1.15
 
 controlPlane:
   patches:
