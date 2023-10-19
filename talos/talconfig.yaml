@@ -20,7 +20,7 @@ cniConfig:
 nodes:
   # S1 10600k / 128GB / 4x4TB SSD / 10GbE / 2x1TB NVME / 2x500GB SSD
   - hostname: s1.srbgod.io
-    ipAddress: 10.0.1.211
+    ipAddress: 10.0.1.210
     installDiskSelector:
       busPath: /pci0000:00/0000:00:01.0/0000:01:00.0/0000:02:08.0/0000:03:00.0/ata5/host4/target4:0:0/4:0:0:0/
     controlPlane: true
@@ -31,6 +31,8 @@ nodes:
       - interface: eno1
         mtu: 1500
         dhcp: true
+        vip:
+          ip: 10.0.1.10
 
   
   # macm 2018 3.2GHz / 32GB / 256GB SSD / 10GbE
@@ -46,6 +48,9 @@ nodes:
       - interface: enp6s0
         mtu: 1500
         dhcp: true
+        vip:
+          ip: 10.0.1.10
+
 
 controlPlane:
   patches:
