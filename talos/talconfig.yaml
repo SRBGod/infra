@@ -2,9 +2,9 @@
 clusterName: k8s
 
 clusterPodNets:
-  - 10.0.2.0/16
-clusterSvcNets:
   - 10.0.3.0/16
+clusterSvcNets:
+  - 10.0.4.0/16
 
 endpoint: https://k8s.srbgod.io:6443
 
@@ -13,10 +13,10 @@ talosVersion: v1.5.4
 kubernetesVersion: 1.28.3
 
 additionalApiServerCertSans:
-  - 10.0.1.15
+  - 10.0.1.10
 
 additionalMachineCertSans:
-  - 10.0.1.15
+  - 10.0.1.10
   - k8s.srbgod.io
 
 cniConfig:
@@ -25,7 +25,7 @@ cniConfig:
 nodes:
   # S1 10600k / 128GB / 4x4TB SSD / 10GbE / 2x1TB NVME / 2x500GB SSD
   - hostname: s1.srbgod.io
-    ipAddress: 10.0.1.40
+    ipAddress: 10.0.1.2
     installDiskSelector:
       busPath: /pci0000:00/0000:00:01.0/0000:01:00.0/0000:02:08.0/0000:03:00.0/ata5/host4/target4:0:0/4:0:0:0/
     controlPlane: true
@@ -35,18 +35,18 @@ nodes:
     networkInterfaces:
       - interface: eno1
         mtu: 1500
-        dhcp: true
+        dhcp: false
         addresses:
-          - 10.0.1.40/24
+          - 10.0.1.2/24
         routes:
           - network: 0.0.0.0/0
             gateway: 10.0.1.1
         vip:
-          ip: 10.0.1.15
+          ip: 10.0.1.10
   
   # macm 2018 3.2GHz / 32GB / 256GB SSD / 10GbE
   - hostname: s2.srbgod.io
-    ipAddress: 10.0.1.41
+    ipAddress: 10.0.1.3
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata7/host6/target6:0:0/6:0:0:0/
     controlPlane: true
@@ -56,14 +56,14 @@ nodes:
     networkInterfaces:
       - interface: enp6s0
         mtu: 1500
-        dhcp: true
+        dhcp: false
         addresses:
-          - 10.0.1.41/24
+          - 10.0.1.3/24
         routes:
           - network: 0.0.0.0/0
             gateway: 10.0.1.1
         vip:
-          ip: 10.0.1.15
+          ip: 10.0.1.10
 
 controlPlane:
   patches:
